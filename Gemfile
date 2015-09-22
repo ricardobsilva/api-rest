@@ -7,7 +7,7 @@ gem 'rails', '4.2.3'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
-
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
