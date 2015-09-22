@@ -28,15 +28,13 @@ class Api::V1::AddressesController < ApplicationController
   def create
     @api_v1_address = Address.new(api_v1_address_params)
 
-    respond_to do |format|
+    
       if @api_v1_address.save
-        format.html { redirect_to @api_v1_address, notice: 'Address was successfully created.' }
-        format.json { render :show, status: :created, location: @api_v1_address }
+        render json: @api_v1_address
       else
-        format.html { render :new }
-        format.json { render json: @api_v1_address.errors, status: :unprocessable_entity }
+        render json: @api_v1_address.errors
       end
-    end
+    
   end
 
   # PATCH/PUT /api/v1/addresses/1
@@ -67,6 +65,6 @@ class Api::V1::AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def api_v1_address_params
-      params.require(:api_v1_address).permit(:patio, :district, :number, :zip_code)
+      params.require(:address).permit(:patio, :district, :number, :zip_code)
     end
 end
