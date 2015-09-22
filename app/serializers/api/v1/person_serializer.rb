@@ -1,3 +1,3 @@
 class Api::V1::PersonSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id ,:name , :cpf , :ip_person
 end

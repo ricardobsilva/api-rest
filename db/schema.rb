@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922160211) do
+ActiveRecord::Schema.define(version: 20150922180035) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "patio"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20150922160211) do
     t.string   "ip_person"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "doer"
+    t.string   "buyer"
   end
 
 end
