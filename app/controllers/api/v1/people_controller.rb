@@ -66,6 +66,6 @@ class Api::V1::PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def api_v1_person_params
-      params.require(:person).permit(:name, :cpf, :ip_person, :email, :doer, :buyer)
+      params.require(:person).permit(:name, :cpf, :ip_person, :email, :doer, :buyer, :addresses_attributes => [:id, :patio, :district , :number, :zip_code])
     end
 end
