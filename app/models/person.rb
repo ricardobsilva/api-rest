@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
   
   validates :email, :cpf, uniqueness: true , presence: true
-  validates_as_cpf :cpf
+  validates_cpf :cpf
 
 
 

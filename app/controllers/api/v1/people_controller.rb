@@ -4,8 +4,13 @@ class Api::V1::PeopleController < ApplicationController
   # GET /api/v1/people
   # GET /api/v1/people.json
   def index
+    token = request.headers['X-Api-Key']
     @api_v1_people = Person.all
-    render json: @api_v1_people
+    if token == 'b4tm4n'
+      render json: @api_v1_people
+    else
+      render json: 'token ivalido' 
+    end
   end
 
   # GET /api/v1/people/1
@@ -29,7 +34,7 @@ class Api::V1::PeopleController < ApplicationController
     @api_v1_person = Person.new(api_v1_person_params)
 
     
-      if @api_v1_person.save
+      if @api_v1_person.save 
         render json: @api_v1_person
       else
         render json: @api_v1_person.errors,  status: 400
@@ -40,8 +45,8 @@ class Api::V1::PeopleController < ApplicationController
   # PATCH/PUT /api/v1/people/1
   # PATCH/PUT /api/v1/people/1.json
   def update
-    
-      if @api_v1_person.update(api_v1_person_params)
+       
+      if @api_v1_person.update(api_v1_person_params) 
         render json: @api_v1_person
       else
         render json: @api_v1_person.errors,  status: 400
