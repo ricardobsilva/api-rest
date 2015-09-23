@@ -32,7 +32,7 @@ class Api::V1::PeopleController < ApplicationController
       if @api_v1_person.save
         render json: @api_v1_person
       else
-        render json: @api_v1_person.errors,  status: 403
+        render json: @api_v1_person.errors,  status: 400
       end
     
   end
@@ -44,7 +44,7 @@ class Api::V1::PeopleController < ApplicationController
       if @api_v1_person.update(api_v1_person_params)
         render json: @api_v1_person
       else
-        render json: @api_v1_person.errors,  status: 403
+        render json: @api_v1_person.errors,  status: 400
       end
     
   end
