@@ -32,7 +32,7 @@ class Api::V1::AddressesController < ApplicationController
       if @api_v1_address.save
         render json: @api_v1_address
       else
-        render json: @api_v1_address.errors
+        render json: @api_v1_address.errors,  status: 400
       end
     
   end
@@ -44,7 +44,7 @@ class Api::V1::AddressesController < ApplicationController
       if @api_v1_address.update(api_v1_address_params)
         render json: @api_v1_address
       else
-        render json: @api_v1_address.errors
+        render json: @api_v1_address.errors,  status: 400
       end
     
   end
