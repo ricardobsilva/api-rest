@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922183001) do
+ActiveRecord::Schema.define(version: 20151216174151) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "patio"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20150922183001) do
 
   add_index "addresses", ["person_id"], name: "index_addresses_on_person_id"
 
+  create_table "items", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "people", force: :cascade do |t|
     t.string   "name"
     t.string   "cpf"
@@ -35,5 +41,24 @@ ActiveRecord::Schema.define(version: 20150922183001) do
     t.string   "doer"
     t.string   "buyer"
   end
+
+  create_table "shopping_list_items", force: :cascade do |t|
+    t.integer  "shopping_list_id"
+    t.integer  "item_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "shopping_list_items", ["item_id"], name: "index_shopping_list_items_on_item_id"
+  add_index "shopping_list_items", ["shopping_list_id"], name: "index_shopping_list_items_on_shopping_list_id"
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "shopping_lists", ["person_id"], name: "index_shopping_lists_on_person_id"
 
 end
