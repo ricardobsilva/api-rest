@@ -4,13 +4,8 @@ class Api::V1::PeopleController < ApplicationController
   # GET /api/v1/people
   # GET /api/v1/people.json
   def index
-    token = request.headers['X-Api-Key']
     @api_v1_people = Person.all
-    if token == 'b4tm4n'
-      render json: @api_v1_people
-    else
-      render json: 'token ivalido' 
-    end
+    render json: @api_v1_people
   end
 
   # GET /api/v1/people/1
